@@ -5,6 +5,8 @@ const connectToDatabase = require("./config/db");
 
 const app = express();
 
+app.use(express.json());
+
 connectToDatabase()
     .then(() => {
         console.log("Successfully connected to DB");
