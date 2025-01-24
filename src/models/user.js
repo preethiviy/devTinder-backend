@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema(
         firstName: {
             type: String,
             required: true,
-            minLength: 4,
+            minLength: 2,
             maxLength: 50,
         },
         lastName: {
@@ -55,7 +55,7 @@ const userSchema = new mongoose.Schema(
         },
         photoUrl: {
             type: String,
-            default: "https://geographyandyou.com/images/user-profile.png",
+            //default: "",
             validate(value) {
                 if (!validator.isURL(value)) {
                     throw new Error("Invalid Photo URL: " + value);
@@ -64,7 +64,7 @@ const userSchema = new mongoose.Schema(
         },
         about: {
             type: String,
-            default: "This is a default about of the user!",
+            default: "",
         },
         skills: {
             type: [String],
