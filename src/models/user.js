@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema(
         },
         age: {
             type: Number,
-            min: 18,
+            min: [18, "Age must be atleast 18"],
         },
         gender: {
             type: String,
@@ -69,6 +69,12 @@ const userSchema = new mongoose.Schema(
         },
         skills: {
             type: [String],
+            validate: [
+                function arrayLimit(val) {
+                    return val.length <= 10;
+                },
+                "{PATH} exceeds the limit of 10",
+            ],
         },
     },
     {

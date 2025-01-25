@@ -20,6 +20,10 @@ profileRouter.patch("/profile/edit", userAuth, async (req, res) => {
             throw new Error("Invalid Edit Request");
         }
 
+        if (req.body?.skills?.length > 10) {
+            throw new Error("Skills cannot be more than 10");
+        }
+
         const loggedInUser = req.user;
 
         Object.keys(req.body).forEach(
